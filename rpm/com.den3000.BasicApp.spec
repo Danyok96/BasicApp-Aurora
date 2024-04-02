@@ -14,7 +14,7 @@ BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Qml)
 BuildRequires:  pkgconfig(Qt5Quick)
 BuildRequires:  desktop-file-utils
-
+BuildRequires:  cmake
 
 %description
 Пример элмементарного приложения на Аворра ОС
@@ -23,12 +23,12 @@ BuildRequires:  desktop-file-utils
 %setup -q -n %{name}-%{version}
 
 %build
-%qmake5
+%cmake
 %make_build
 
 %install
 rm -rf %{buildroot}
-%qmake5_install
+%make_install
 
 desktop-file-install --delete-original         --dir %{buildroot}%{_datadir}/applications                %{buildroot}%{_datadir}/applications/*.desktop
 
